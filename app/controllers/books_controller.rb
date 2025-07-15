@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
   def new
-    @book = Book.new
+    @new_book = Book.new
   end
 
   def create
-    @book =Book.new(book_params)
-    @book.user_id = current_user.id
-    @book.save
+    @new_book =Book.new(book_params)
+    @new_book.user_id = current_user.id
+    @new_book.save
     redirect_to books_path
   end
 

@@ -1,2 +1,32 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4" style="background-color: orange;">
+      <h2>サイドバー</h2>
+    </div>
+    <div class="col-lg-8">
+      <h2>Book detail</h2>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>
+              <%= image_tag 'no_image.jpg' %><br>
+              <%= @book.user.name %>
+            </td>
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+            <td>
+              <% if @book.user == current_user %>
+                <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+            <td>
+              <% if @book.user == current_user %>
+                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

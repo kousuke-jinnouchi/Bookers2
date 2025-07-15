@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-4" style="background-color: orange;">
-      <h2>サイドバー</h2>
-    </div>
-    <div class="col-lg-8">
+    <%= render 'users/info', user: @user %>
+    
+    <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
-      <table class="table table-striped">
+      <table class="table">
         <tbody>
           <tr>
             <td>
-              <%= image_tag 'no_image.jpg' %><br>
-              <%= @book.user.name %>
+              <%= image_tag @book.user.get_profile_image(100,100) %><br>
+              <%= link_to @book.user.name, user_path(@book.user) %>
             </td>
             <td><%= @book.title %></td>
             <td><%= @book.body %></td>
